@@ -22,7 +22,10 @@ function clearCanvas(){
 window.onload = (e) =>{
     clearCanvas()
 
-    console.log(new Circle())
+    let c= new Circle()
+    c.expand()
+    c.checkCollission()
+    console.log(c)
 }
 
 export {canvas,ctx,cw,ch}
