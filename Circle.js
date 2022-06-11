@@ -23,11 +23,20 @@ export class Circle{
     }
 
     checkCollission(){
+
+
         if(this.surfaceColor == "black"){
-            
+            for(let x=0;x<cw;x++){
+                for(let y=0;y<ch;y++){
+                    if((x-this.x)^2+(y=this.y)){
+                        
+                    }
+                }
+            }
         }else{
 
         }
+
     }
 
     
