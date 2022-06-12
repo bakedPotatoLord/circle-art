@@ -6,7 +6,7 @@ export class Circle{
         this.x =Math.floor(Math.random()*ch)
         this.y =Math.floor(Math.random()*cw)
         this.r = 0
-        this.maxWallDistance = Math.min(Math.abs(this.x),Math.abs(this.x-cw),Math.abs(this.y),Math.abs(y-ch))
+        this.maxWallDistance = Math.min(Math.abs(this.x),Math.abs(this.x-cw),Math.abs(this.y),Math.abs(this.y-ch))
 
         if(ctx.getImageData(this.x,this.y,1,1).data[0] == 0 ){
             //if starts on black surface
