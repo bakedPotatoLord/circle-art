@@ -1,5 +1,5 @@
 
-import {cw,ch,ctx} from "./main.js"
+import {cw,ch,ctx,tau} from "./main.js"
 
 export class Circle{
     constructor(){
@@ -61,6 +61,26 @@ export class Circle{
         }
 
     }
+
+    findMaxDistance(){
+        const x = this.x
+        const y = this.y
+        return Math.min(Math.abs(x),Math.abs(x-cw),Math.abs(y),Math.abs(y-ch))
+        /*
+        used for testing
+
+        ctx.beginPath()
+        ctx.arc(x,y,3,0,tau)
+        ctx.fillStyle = 'red'
+        ctx.fill()
+        ctx.beginPath()
+        ctx.arc(x,y,maxDist,0,tau)
+        ctx.strokeStyle = 'blue'
+        ctx.stroke()
+        */
+    }
+
+    
 
     
 }
