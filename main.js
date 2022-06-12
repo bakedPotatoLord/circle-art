@@ -12,6 +12,8 @@ canvas.height = ch
 
 const depth = 10
 
+var circles
+
 
 function clearCanvas(){
     ctx.clearRect(0,0,cw,ch)
@@ -19,21 +21,21 @@ function clearCanvas(){
     ctx.fillRect(0,0,cw,ch)
 }
 
-var c
+
 
 window.onload = (e) =>{
     clearCanvas()
 
-    c= new Circle()
-    c.expand()
+    circles.push(new Circle()) 
+    circles[0].expand()
 
-    console.log(c)
+    console.log(circles[0])
 }
 
 
 canvas.onclick = (e)=>{
     //c.checkCollission()
-    c.findMaxDistance()
+
 }
 
 let tau=2*Math.PI
