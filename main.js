@@ -32,7 +32,9 @@ window.onload = (e) =>{
 
 
 canvas.onclick = (e)=>{
-    c.checkCollission()
+    //c.checkCollission()
+    c.findMaxDistance()
 }
 
-export {canvas,ctx,cw,ch}
+let tau=2*Math.PI
+export {canvas,ctx,cw,ch,tau }
