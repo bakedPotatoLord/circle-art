@@ -19,13 +19,20 @@ function clearCanvas(){
     ctx.fillRect(0,0,cw,ch)
 }
 
+var c
+
 window.onload = (e) =>{
     clearCanvas()
 
-    let c= new Circle()
+    c= new Circle()
     c.expand()
-    c.checkCollission()
+
     console.log(c)
+}
+
+
+canvas.onclick = (e)=>{
+    c.checkCollission()
 }
 
 export {canvas,ctx,cw,ch}
