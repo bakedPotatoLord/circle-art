@@ -1,5 +1,7 @@
 
-import {cw,ch,ctx,tau} from "./main.js"
+import {cw,ch,ctx,tau, circles} from "./main.js"
+import {dist} from "./functs.js"
+
 
 export class Circle{
     constructor(){
@@ -19,52 +21,54 @@ export class Circle{
         this.isExpanding = true
     }
 
-    expand(){
-        this.r ++
-    }
-
-    checkCollission(){
-        console.log("starting colision search")
 
 
-        if(this.surfaceColor == "black"){
-            //if starting on black
-            for(var x=0;x<cw;x++){
-                console.log(`${(x/cw)*100} percent`)
-                for(var y=0;y<ch;y++){
-                    if((x-this.x)^2+(y=this.y) > this.r && ctx.getImageData(x,y,1,1).data[0] == 255){
-                        //if it finds any white in the circle
-                        return true 
-                    }
+    findMaxRadius(){
+
+        if(circles.length == 0){
+            this.r = this.maxWallDistance
+            return
+        }
+
+        for(let i of circles){
+            if(this.x != i.x && this.y != i.y){
+                //if not the same circle
+
+                if( dist(this.x,this.y,i.x,i.y) <i.r){
+                    //if inside of a circle
+                    console.log("inside of a circle")
+                    this.r = i.r - dist(this.x,this.y,i.x,i.y)
+                    return
                 }
             }
-            //if it finds nothing white underneath the circle
-            return false
+        }
 
+        this.r = this.maxWallDistance
+    }
+
+
+    draw(){
+        if(this.surfaceColor == "black"){
+            //if starting on black
+            ctx.beginPath()
+            ctx.arc(this.x,this.y,this.r,0,tau)
+            ctx.fillStyle = 'white'
+            ctx.fill()
 
         }else{
             //if starting on white
-            for(var x=0;x<cw;x++){
-                console.log(`${Math.floor((x/cw)*100)} percent`)
-                for(var y=0;y<ch;y++){
-                    
 
-                    if((x-this.x)^2+(y-this.y) > this.r && ctx.getImageData(x,y,1,1).data[0] == 0){
-                        //if it finds any black in the circle
-                        return true 
-
-                    }
-                }
-            }
-            //if it finds nothing white underneath the circle
-            return false
+            ctx.beginPath()
+            ctx.arc(this.x,this.y,this.r,0,tau)
+            ctx.fillStyle = 'black'
+            ctx.fill()
 
         }
-
+        /*
+        ctx.beginPath()
+        ctx.arc(this.x,this.y,2,0,tau)
+        ctx.fillStyle = 'red'
+        ctx.fill()
+        */
     }
-
-
-    
-
-    
 }
