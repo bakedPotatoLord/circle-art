@@ -31,15 +31,11 @@ export class Circle{
         }
 
         for(let i of circles){
-            if(this.x != i.x && this.y != i.y){
-                //if not the same circle
-
-                if( dist(this.x,this.y,i.x,i.y) <i.r){
-                    //if inside of a circle
-                    console.log("inside of a circle")
-                    this.r = i.r - dist(this.x,this.y,i.x,i.y)
-                    return
-                }
+            if( dist(this.x,this.y,i.x,i.y) <i.r){
+                //if inside of a circle
+                console.log("inside of a circle")
+                this.r = i.r - dist(this.x,this.y,i.x,i.y)
+                return
             }
         }
 
