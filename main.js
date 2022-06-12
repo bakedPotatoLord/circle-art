@@ -12,7 +12,7 @@ canvas.height = ch
 
 const depth = 10
 
-var circles
+var circles = []
 
 
 function clearCanvas(){
@@ -26,17 +26,25 @@ function clearCanvas(){
 window.onload = (e) =>{
     clearCanvas()
 
-    circles.push(new Circle()) 
-    circles[0].expand()
+    console.log("window loaded")
 
-    console.log(circles[0])
+    
+    draw10()
 }
 
 
-canvas.onclick = (e)=>{
-    //c.checkCollission()
+canvas.onclick = (e)=>{}
 
+var c;
+function draw10(){
+    requestAnimationFrame(draw10)
+    for(let i=0;i<depth;i++){
+        c=new Circle()
+        c.findMaxRadius()
+        c.draw()
+        circles.push(c)
+    }
 }
 
 let tau=2*Math.PI
-export {canvas,ctx,cw,ch,tau }
+export {canvas,ctx,cw,ch,tau,circles }
