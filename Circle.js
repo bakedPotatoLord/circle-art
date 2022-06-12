@@ -6,6 +6,7 @@ export class Circle{
         this.x =Math.floor(Math.random()*ch)
         this.y =Math.floor(Math.random()*cw)
         this.r = 0
+        this.maxWallDistance = Math.min(Math.abs(this.x),Math.abs(this.x-cw),Math.abs(this.y),Math.abs(y-ch))
 
         if(ctx.getImageData(this.x,this.y,1,1).data[0] == 0 ){
             //if starts on black surface
@@ -62,23 +63,6 @@ export class Circle{
 
     }
 
-    findMaxDistance(){
-        const x = this.x
-        const y = this.y
-        return Math.min(Math.abs(x),Math.abs(x-cw),Math.abs(y),Math.abs(y-ch))
-        /*
-        used for testing
-
-        ctx.beginPath()
-        ctx.arc(x,y,3,0,tau)
-        ctx.fillStyle = 'red'
-        ctx.fill()
-        ctx.beginPath()
-        ctx.arc(x,y,maxDist,0,tau)
-        ctx.strokeStyle = 'blue'
-        ctx.stroke()
-        */
-    }
 
     
 
