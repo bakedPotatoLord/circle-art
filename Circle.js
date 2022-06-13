@@ -41,7 +41,7 @@ export class Circle{
         //set radius relative to the smallest circle
         if(tempCircles.length > 0 && smallest.r < this.r){
             //if inside of a circle
-            console.log("inside of a circle")
+            //console.log("inside of a circle")
             this.r = smallest.r - dist(this.x,this.y,smallest.x,smallest.y)
         }
 
@@ -53,7 +53,7 @@ export class Circle{
             
             if( dist(this.x,this.y,i.x,i.y) <i.r+this.maxWallDistance){
                 //if overlapping a circle
-                console.log("overlapping a circle")
+                //console.log("overlapping a circle")
                 
                 if(dist(this.x,this.y,i.x,i.y) - i.r < this.r){
                     this.r =  Math.abs(dist(this.x,this.y,i.x,i.y) - i.r )
