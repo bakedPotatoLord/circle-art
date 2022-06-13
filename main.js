@@ -4,13 +4,17 @@ import {Circle} from "./Circle.js"
 let canvas = document.querySelector("canvas")
 var ctx = canvas.getContext('2d')
 
-const cw =400
-const ch = 400
+let widthInp = document.getElementById("width")
+let heightInp = document.getElementById("height")
+let circleNumInp = document.getElementById("circleNum")
+
+var cw =400
+var ch = 400
 
 canvas.width = cw
 canvas.height = ch
 
-const depth = 10
+let depth
 
 var circles = []
 
@@ -27,17 +31,40 @@ window.onload = (e) =>{
     clearCanvas()
 
     console.log("window loaded")
-
-    
-    //draw()
 }
 
 
-canvas.onclick = (e)=>{draw()}
+
+document.forms[0].onsubmit =(e)=>{
+    //prevent form submision
+    e.preventDefault()
+
+    //clear circle array
+    circles = []
+
+    //set canvas width
+    cw = widthInp.value
+    ch = heightInp.value
+    canvas.width = cw
+    canvas.height = ch
+
+    //clear canvas
+    clearCanvas()
+
+    //set depth
+    depth = circleNumInp.value
+
+    //draw circles
+    draw()
+
+}
 
 var c;
 function draw(){
-    requestAnimationFrame(draw)
+    if(circles.length < depth){
+        requestAnimationFrame(draw)
+    }
+
     for(let i=0;i<1;i++){
         c=new Circle()
         c.findMaxRadius()
