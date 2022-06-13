@@ -14,8 +14,15 @@ prerequisites:<br>
 
 <br>
 
-git clone this directory<br></br>
+git clone this directory<br>
 
 ```shell
-git clone 
+git clone https://github.com/bakedPotatoLord/circle-art.git
 ```
+navigate to the folder and Run
+
+```shell
+npx serve
+```
+
+finaly, open http://localhost:3000 and follow the instructions there.
