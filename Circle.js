@@ -86,12 +86,12 @@ export class Circle{
             ctx.fill()
 
         }
-        
+        /*
         ctx.beginPath()
         ctx.arc(this.x,this.y,2,0,tau)
         ctx.fillStyle = 'red'
         ctx.fill()
-        
+        */
     }
 
     smallestCircle(arr){
