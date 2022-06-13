@@ -1,0 +1,17 @@
+GOALS:
+
+expand until wall
+expand till smallest circle
+expand until overlap
+
+Procedure:
+set r to wallDist
+if inside a circle:
+    find smallest circle
+    if smallestCircle is smaller than r,:
+        set smallestCircle to r
+
+if overlapping a circle and not inside of it:
+    find maxwithoutOverlap
+    set r to maxwithoutOverlap
+
