@@ -26,7 +26,6 @@ export class Circle{
     findMaxRadius(){
         let tempCircles = []
         let smallest
-        let max_WO_Overlap
         
         this.r = this.maxWallDistance
         //find all of the circles that it is inside of
