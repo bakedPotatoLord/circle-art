@@ -29,16 +29,16 @@ window.onload = (e) =>{
     console.log("window loaded")
 
     
-    draw10()
+    //draw()
 }
 
 
-canvas.onclick = (e)=>{}
+canvas.onclick = (e)=>{draw(1)}
 
 var c;
-function draw10(){
-    requestAnimationFrame(draw10)
-    for(let i=0;i<depth;i++){
+function draw(iterations){
+    //requestAnimationFrame(draw)
+    for(let i=0;i<iterations;i++){
         c=new Circle()
         c.findMaxRadius()
         c.draw()

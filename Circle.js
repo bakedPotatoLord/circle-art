@@ -18,28 +18,47 @@ export class Circle{
             this.surfaceColor = "white"
         }
 
-        this.isExpanding = true
+
     }
 
 
 
     findMaxRadius(){
-
-        if(circles.length == 0){
-            this.r = this.maxWallDistance
-            return
-        }
-
+        let tempCircles = []
+        let smallest
+        
+        this.r = this.maxWallDistance
+        //find all of the circles that it is inside of
         for(let i of circles){
             if( dist(this.x,this.y,i.x,i.y) <i.r){
                 //if inside of a circle
-                console.log("inside of a circle")
-                this.r = i.r - dist(this.x,this.y,i.x,i.y)
-                return
+                tempCircles.push(i)
             }
         }
+        //find the smallest one
+        smallest = this.smallestCircle(tempCircles)
+        //set radius relative to the smallest circle
+        if(tempCircles.length > 0){
+            console.log("inside of a circle")
+            this.r = smallest.r - dist(this.x,this.y,smallest.x,smallest.y)
+        }
 
-        this.r = this.maxWallDistance
+
+        
+
+        /*
+        for(let i of circles){
+            //exclude circles that it isinside of
+            if( dist(this.x,this.y,i.x,i.y) <i.r+this.maxWallDistance){
+                //if overlapping a circle
+                console.log("overlapping a circle")
+
+                this.r =  dist(this.x,this.y,i.x,i.y) - i.r 
+            }
+        }
+        */
+
+        
     }
 
 
@@ -60,11 +79,21 @@ export class Circle{
             ctx.fill()
 
         }
-        /*
+        
         ctx.beginPath()
         ctx.arc(this.x,this.y,2,0,tau)
         ctx.fillStyle = 'red'
         ctx.fill()
-        */
+        
+    }
+
+    smallestCircle(arr){
+        let currentMin = arr[0]
+        for(let i of arr){
+            if(i.r < currentMin.r){
+                currentMin = i.r
+            }
+        }
+        return currentMin
     }
 }
