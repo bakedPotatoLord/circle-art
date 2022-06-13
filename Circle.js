@@ -26,6 +26,7 @@ export class Circle{
     findMaxRadius(){
         let tempCircles = []
         let smallest
+        let max_WO_Overlap
         
         this.r = this.maxWallDistance
         //find all of the circles that it is inside of
@@ -38,7 +39,8 @@ export class Circle{
         //find the smallest one
         smallest = this.smallestCircle(tempCircles)
         //set radius relative to the smallest circle
-        if(tempCircles.length > 0){
+        if(tempCircles.length > 0 && smallest.r < this.r){
+            //if inside of a circle
             console.log("inside of a circle")
             this.r = smallest.r - dist(this.x,this.y,smallest.x,smallest.y)
         }
@@ -46,17 +48,22 @@ export class Circle{
 
         
 
-        /*
+        tempCircles =[]
         for(let i of circles){
-            //exclude circles that it isinside of
+            
             if( dist(this.x,this.y,i.x,i.y) <i.r+this.maxWallDistance){
                 //if overlapping a circle
                 console.log("overlapping a circle")
+                
+                if(dist(this.x,this.y,i.x,i.y) - i.r < this.r){
+                    this.r =  Math.abs(dist(this.x,this.y,i.x,i.y) - i.r )
+                }
 
-                this.r =  dist(this.x,this.y,i.x,i.y) - i.r 
             }
         }
-        */
+
+        
+        
 
         
     }
@@ -96,4 +103,6 @@ export class Circle{
         }
         return currentMin
     }
+
+
 }
