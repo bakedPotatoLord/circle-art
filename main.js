@@ -33,12 +33,12 @@ window.onload = (e) =>{
 }
 
 
-canvas.onclick = (e)=>{draw(100)}
+canvas.onclick = (e)=>{draw()}
 
 var c;
-function draw(iterations){
-    //requestAnimationFrame(draw)
-    for(let i=0;i<iterations;i++){
+function draw(){
+    requestAnimationFrame(draw)
+    for(let i=0;i<1;i++){
         c=new Circle()
         c.findMaxRadius()
         c.draw()
