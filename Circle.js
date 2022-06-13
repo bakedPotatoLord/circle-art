@@ -1,7 +1,5 @@
-
 import {cw,ch,ctx,tau, circles} from "./main.js"
 import {dist} from "./functs.js"
-
 
 export class Circle{
     constructor(){
@@ -17,16 +15,13 @@ export class Circle{
             //if starts on white surface
             this.surfaceColor = "white"
         }
-
-
     }
-
-
 
     findMaxRadius(){
         let tempCircles = []
         let smallest
         
+        //initialises the radius
         this.r = this.maxWallDistance
         //find all of the circles that it is inside of
         for(let i of circles){
@@ -44,29 +39,17 @@ export class Circle{
             this.r = smallest.r - dist(this.x,this.y,smallest.x,smallest.y)
         }
 
-
-        
-
         tempCircles =[]
         for(let i of circles){
-            
             if( dist(this.x,this.y,i.x,i.y) <i.r+this.maxWallDistance){
                 //if overlapping a circle
                 //console.log("overlapping a circle")
-                
                 if(dist(this.x,this.y,i.x,i.y) - i.r < this.r){
                     this.r =  Math.abs(dist(this.x,this.y,i.x,i.y) - i.r )
                 }
-
             }
-        }
-
-        
-        
-
-        
+        } 
     }
-
 
     draw(){
         if(this.surfaceColor == "black"){
@@ -75,17 +58,15 @@ export class Circle{
             ctx.arc(this.x,this.y,this.r,0,tau)
             ctx.fillStyle = 'white'
             ctx.fill()
-
         }else{
             //if starting on white
-
             ctx.beginPath()
             ctx.arc(this.x,this.y,this.r,0,tau)
             ctx.fillStyle = 'black'
             ctx.fill()
-
         }
-        /*
+        //for highlighting the center
+        /* 
         ctx.beginPath()
         ctx.arc(this.x,this.y,2,0,tau)
         ctx.fillStyle = 'red'
@@ -102,6 +83,4 @@ export class Circle{
         }
         return currentMin
     }
-
-
 }
