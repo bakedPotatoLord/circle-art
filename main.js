@@ -33,7 +33,7 @@ window.onload = (e) =>{
 }
 
 
-canvas.onclick = (e)=>{draw(1)}
+canvas.onclick = (e)=>{draw(100)}
 
 var c;
 function draw(iterations){
