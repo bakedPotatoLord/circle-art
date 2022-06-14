@@ -4,6 +4,8 @@ import {Circle} from "./Circle.js"
 let canvas = document.querySelector("canvas")
 var ctx = canvas.getContext('2d')
 
+let header= document.querySelector("h1")
+
 let widthInp = document.getElementById("width")
 let heightInp = document.getElementById("height")
 let circleNumInp = document.getElementById("circleNum")
@@ -63,7 +65,10 @@ var c;
 function draw(){
     if(circles.length < depth){
         requestAnimationFrame(draw)
+    }else{
+        header.innerHTML = `Circle Art!` 
     }
+    header.innerHTML = `Circle Art! ${Math.floor((circles.length/depth)*100)}%`
 
     for(let i=0;i<1;i++){
         c=new Circle()
