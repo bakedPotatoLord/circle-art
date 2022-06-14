@@ -1,4 +1,4 @@
-import {cw,ch,ctx,tau, circles} from "./main.js"
+import {cw,ch,ctx,tau, circles,checkbox} from "./main.js"
 import {dist} from "./functs.js"
 
 export class Circle{
@@ -52,19 +52,23 @@ export class Circle{
     }
 
     draw(){
-        if(this.surfaceColor == "black"){
-            //if starting on black
-            ctx.beginPath()
-            ctx.arc(this.x,this.y,this.r,0,tau)
-            ctx.fillStyle = 'white'
-            ctx.fill()
+        if(checkbox.checked){
+            ctx.fillStyle=`hsl(${Math.floor(Math.random()*360)},100%,50%)`
         }else{
-            //if starting on white
-            ctx.beginPath()
-            ctx.arc(this.x,this.y,this.r,0,tau)
-            ctx.fillStyle = 'black'
-            ctx.fill()
+            if(this.surfaceColor == "black"){
+                //if starting on black
+                ctx.fillStyle = 'white'
+            }else{
+                //if starting on white
+                ctx.fillStyle = 'black'
+            }
         }
+
+        ctx.beginPath()
+        ctx.arc(this.x,this.y,this.r,0,tau)
+        ctx.fill()
+
+
         //for highlighting the center
         /* 
         ctx.beginPath()
