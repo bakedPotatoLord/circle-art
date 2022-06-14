@@ -65,8 +65,6 @@ var c;
 function draw(){
     if(circles.length < depth){
         requestAnimationFrame(draw)
-    }else{
-        header.innerHTML = `Circle Art!` 
     }
     header.innerHTML = `Circle Art! ${Math.floor((circles.length/depth)*100)}%`
 
