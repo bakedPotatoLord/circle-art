@@ -9,6 +9,7 @@ let header= document.querySelector("h1")
 let widthInp = document.getElementById("width")
 let heightInp = document.getElementById("height")
 let circleNumInp = document.getElementById("circleNum")
+let checkbox = document.getElementById("color")
 
 var cw =400
 var ch = 400
@@ -27,15 +28,11 @@ function clearCanvas(){
     ctx.fillRect(0,0,cw,ch)
 }
 
-
-
 window.onload = (e) =>{
     clearCanvas()
 
     console.log("window loaded")
 }
-
-
 
 document.forms[0].onsubmit =(e)=>{
     //prevent form submision
@@ -77,4 +74,4 @@ function draw(){
 }
 
 let tau=2*Math.PI
-export {canvas,ctx,cw,ch,tau,circles }
+export {canvas,ctx,cw,ch,tau,circles,checkbox }
