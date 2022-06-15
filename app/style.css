@@ -1,5 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Charis+SIL&family=Joan&display=swap');
+
 body{
     text-align: center;
+}
+
+h1{
+    font-family: 'Joan', serif;
+}
+
+label{
+    font-family: 'Charis SIL', serif;
 }
 
 canvas{

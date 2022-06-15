@@ -25,21 +25,12 @@ export class Circle{
         this.r = this.maxWallDistance
         //find all of the circles that it is inside of
         for(let i of circles){
-            if( dist(this.x,this.y,i.x,i.y) <i.r){
-                //if inside of a circle
-                tempCircles.push(i)
+            if( dist(this.x,this.y,i.x,i.y) <i.r && this.r >i.r){
+                //if inside of a circle and larger than said circle
+                this.r = i.r - dist(this.x,this.y,i.x,i.y)
             }
         }
-        //find the smallest one
-        smallest = this.smallestCircle(tempCircles)
-        //set radius relative to the smallest circle
-        if(tempCircles.length > 0 && smallest.r < this.r){
-            //if inside of a circle
-            //console.log("inside of a circle")
-            this.r = smallest.r - dist(this.x,this.y,smallest.x,smallest.y)
-        }
 
-        tempCircles =[]
         for(let i of circles){
             if( dist(this.x,this.y,i.x,i.y) <i.r+this.maxWallDistance){
                 //if overlapping a circle
@@ -52,6 +43,7 @@ export class Circle{
     }
 
     draw(){
+        //set the color
         if(checkbox.checked){
             ctx.fillStyle=`hsl(${Math.floor(Math.random()*360)},100%,50%)`
         }else{
@@ -63,11 +55,10 @@ export class Circle{
                 ctx.fillStyle = 'black'
             }
         }
-
+        //draw the circle
         ctx.beginPath()
         ctx.arc(this.x,this.y,this.r,0,tau)
         ctx.fill()
-
 
         //for highlighting the center
         /* 
@@ -78,13 +69,4 @@ export class Circle{
         */
     }
 
-    smallestCircle(arr){
-        let currentMin = arr[0]
-        for(let i of arr){
-            if(i.r < currentMin.r){
-                currentMin = i.r
-            }
-        }
-        return currentMin
-    }
 }
