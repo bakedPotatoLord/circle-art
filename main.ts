@@ -6,10 +6,10 @@ var ctx = canvas.getContext('2d')
 
 let header= document.querySelector("h1")
 
-let widthInp = document.getElementById("width")
-let heightInp = document.getElementById("height")
-let circleNumInp = document.getElementById("circleNum")
-let checkbox = document.getElementById("color")
+let widthInp = <HTMLInputElement>document.getElementById("width")
+let heightInp = <HTMLInputElement>document.getElementById("height")
+let circleNumInp = <HTMLInputElement>document.getElementById("circleNum")
+let checkbox = <HTMLInputElement>document.getElementById("color")
 
 var cw =400
 var ch = 400
@@ -17,10 +17,9 @@ var ch = 400
 canvas.width = cw
 canvas.height = ch
 
-let depth
+let depth:number
 
-var circles = []
-
+var circles:Circle[] = []
 
 function clearCanvas(){
     ctx.clearRect(0,0,cw,ch)
@@ -28,9 +27,8 @@ function clearCanvas(){
     ctx.fillRect(0,0,cw,ch)
 }
 
-window.onload = (e) =>{
+window.onload = (e:Event) =>{
     clearCanvas()
-
     console.log("window loaded")
 }
 
@@ -42,8 +40,8 @@ document.forms[0].onsubmit =(e)=>{
     circles = []
 
     //set canvas width
-    cw = widthInp.value
-    ch = heightInp.value
+    cw = parseInt(widthInp.value)
+    ch = parseInt(heightInp.value)
     canvas.width = cw
     canvas.height = ch
 
@@ -51,15 +49,16 @@ document.forms[0].onsubmit =(e)=>{
     clearCanvas()
 
     //set depth
-    depth = circleNumInp.value
+    depth = parseInt(circleNumInp.value)
 
     //draw circles
     draw()
 
 }
 
-var c;
+
 function draw(){
+    let c:Circle
     if(circles.length < depth){
         requestAnimationFrame(draw)
     }

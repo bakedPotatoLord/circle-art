@@ -2,6 +2,11 @@ import {cw,ch,ctx,tau, circles,checkbox} from "./main.js"
 import {dist} from "./functs.js"
 
 export class Circle{
+    x: number
+    y: number
+    r: number
+    maxWallDistance: number
+    surfaceColor: string
     constructor(){
         this.x =Math.floor(Math.random()*ch)
         this.y =Math.floor(Math.random()*cw)
@@ -25,18 +30,18 @@ export class Circle{
         this.r = this.maxWallDistance
         //find all of the circles that it is inside of
         for(let i of circles){
-            if( dist(this.x,this.y,i.x,i.y) <i.r && this.r >i.r){
+            if( dist(this,i) <i.r && this.r >i.r){
                 //if inside of a circle and larger than said circle
-                this.r = i.r - dist(this.x,this.y,i.x,i.y)
+                this.r = i.r - dist(this,i)
             }
         }
 
         for(let i of circles){
-            if( dist(this.x,this.y,i.x,i.y) <i.r+this.maxWallDistance){
+            if( dist(this,i) <i.r+this.maxWallDistance){
                 //if overlapping a circle
                 //console.log("overlapping a circle")
-                if(dist(this.x,this.y,i.x,i.y) - i.r < this.r){
-                    this.r =  Math.abs(dist(this.x,this.y,i.x,i.y) - i.r )
+                if(dist(this,i) - i.r < this.r){
+                    this.r =  Math.abs(dist(this,i) - i.r )
                 }
             }
         } 
