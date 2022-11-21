@@ -1,0 +1,23 @@
+{
+  "name": "circle-art",
+  "version": "1.0.0",
+  "description": "It's a program that makes circle art",
+  "main": "index.js",
+  "devDependencies": {
+    "serve": "^14.1.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bakedPotatoLord/circle-art.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bakedPotatoLord/circle-art/issues"
+  },
+  "homepage": "https://github.com/bakedPotatoLord/circle-art#readme"
+}
